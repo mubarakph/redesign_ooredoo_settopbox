@@ -2,6 +2,19 @@
 
 Local native Android TV launcher, installed as `local.serene.tv`. No analytics, advertising SDK, web view, or third-party runtime. Internet permission is used for optional daily nature-photo downloads from Wikimedia Commons. All enabled launchable apps appear under All apps. Original system components without launchable activities are not shown as app tiles.
 
+## Tested set-top box
+
+| Item | Tested device |
+|---|---|
+| Operator | Ooredoo |
+| Model printed/reported in Settings | **SKW-HP44J-OTV** |
+| Model reported by ADB | `SKW_HP44J_OTV` |
+| ADB product | `HP4426-Ooredoo` |
+| ADB device | `HP44J` |
+| Android TV OS | **14** |
+
+This is the specific box used for development, ADB connection checks, launcher installation, screenshots, and reversible debloating. Firmware protections and package names can differ on other models. This project replaces the home-screen experience; it does not flash a stock Android TV firmware or unlock the bootloader.
+
 ## Use
 
 - D-pad and OK open apps. Hold OK for dock options: add/remove, move left/right, or choose a specific position. Dock order persists locally. The All apps tile always stays at the right end and opens a separate scrollable page; Back collapses it.
