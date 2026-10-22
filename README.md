@@ -30,6 +30,20 @@ Firmware denied disabling the Ooredoo launcher, Agama monitoring, SDT diagnostic
 
 The Ooredoo home intent has priority 2, above ordinary third-party home apps. The normal HOME-role change alone did not override it. Serene therefore uses the scoped Home-button helper; Ooredoo can briefly appear during a transition and remains installed and running. No root or firmware modification was attempted. No global animation, resolution, DNS, or background-process settings were changed.
 
+## Download ADB for Windows
+
+[Download Android SDK Platform-Tools for Windows (official Google ZIP)](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
+
+This package includes `adb.exe`, which is needed to pair with the TV, install the launcher, and run the backup/restore scripts. It is separate from the Android build-tools used to compile the app.
+
+1. Download and extract the ZIP.
+2. Open PowerShell inside the extracted `platform-tools` folder.
+3. Check ADB with `./adb.exe version`.
+4. Enable Wireless debugging on the TV. Open Pair device with pairing code and run `./adb.exe pair TV_IP:PAIRING_PORT`; enter the code when prompted.
+5. Return to the TV's main Wireless debugging screen and run `./adb.exe connect TV_IP:CONNECTION_PORT`, then `./adb.exe devices -l`.
+
+Use the ports currently displayed on the TV: the pairing port and connection port are different. Pass the full path to the extracted `adb.exe` through `-AdbPath` when creating a backup. The ZIP and extracted tools are not stored in this repository.
+
 ## Backup and restore
 
 The `backups` folder holds the original package dump, all three settings namespaces, original HOME component, disabled-package list, device properties, an Ooredoo APK copy, screenshots, and operation results. This is a configuration snapshot, not a full app-data backup.
