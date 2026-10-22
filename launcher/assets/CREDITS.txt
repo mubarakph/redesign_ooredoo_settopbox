@@ -3,6 +3,10 @@ Unsplash license: https://unsplash.com/license
 Images are bundled for offline wallpaper rotation. The app does not contact Unsplash.
 Pexels license: https://www.pexels.com/license/
 
+Daily downloaded photos come from Wikimedia Commons featured forest, mountain,
+and waterfall categories. Each cached photo retains its individual source URL,
+author and license. Hold OK on Change wallpaper and choose Photo credits.
+
 Alpine lake:
 https://images.unsplash.com/photo-1470770841072-f978cf4d019e
 

@@ -8,7 +8,8 @@ $env:JAVA_HOME = $jdk
 $env:PATH = "$jdk\bin;$env:PATH"
 New-Item -ItemType Directory "$root\build\classes", "$root\build\dex" -Force | Out-Null
 function Check { if ($LASTEXITCODE -ne 0) { throw "Build failed: $LASTEXITCODE" } }
-& "$jdk\bin\javac.exe" -encoding UTF-8 --release 8 -classpath $android -d "$root\build\classes" "$root\launcher\src\local\serene\tv\HomeActivity.java" "$root\launcher\src\local\serene\tv\HomeBridge.java"
+$sources = @(Get-ChildItem "$root\launcher\src" -Filter '*.java' -Recurse | ForEach-Object FullName)
+& "$jdk\bin\javac.exe" -encoding UTF-8 --release 8 -classpath $android -d "$root\build\classes" @sources
 Check
 & "$jdk\bin\jar.exe" cf "$root\build\classes.jar" -C "$root\build\classes" .
 Check

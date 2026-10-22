@@ -1,18 +1,21 @@
 # Serene Home — Ooredoo SKW-HP44J-OTV
 
-Local native Android TV launcher, installed as `local.serene.tv`. No internet permission, analytics, advertising SDK, web view, or third-party runtime. All enabled launchable apps appear under All apps. Original system components without launchable activities are not shown as app tiles.
+Local native Android TV launcher, installed as `local.serene.tv`. No analytics, advertising SDK, web view, or third-party runtime. Internet permission is used for optional daily nature-photo downloads from Wikimedia Commons. All enabled launchable apps appear under All apps. Original system components without launchable activities are not shown as app tiles.
 
 ## Use
 
 - D-pad and OK open apps. Hold OK for dock options: add/remove, move left/right, or choose a specific position. Dock order persists locally. The All apps tile always stays at the right end and opens a separate scrollable page; Back collapses it.
 - Initial dock: Netflix, YouTube, Prime Video, Apple TV, Stremio, VLC. These are editable starter choices, not inferred personal favourites.
 - Ten offline scenic photographs rotate every five minutes while Home is visible. Change wallpaper advances immediately. The collection includes forests, mountains, coast, Munnar, Kerala backwaters, and Athirappilly Falls. Only the current photo is decoded. Sources and licenses are in launcher/assets/CREDITS.txt. The top-left brand and welcome slogan are hidden.
+- Daily nature sync is enabled by default. A persisted Android JobScheduler job checks approximately every 24 hours with a four-hour flexible window on unmetered Wi-Fi/Ethernet. Android may defer it when asleep, offline, or storage is low. A one-time initial sync adds the first photo. It does not depend on the PC or Codex remaining open.
+- Sources are Wikimedia Commons featured forest, mountain, and waterfall categories. Only landscape JPEG/PNG photos with public-domain/CC0/CC BY licenses are accepted; obvious people, building, road, and illustration titles are excluded. Category selection is metadata-based, not image recognition. The job adds one new compressed 1280-pixel-wide JPEG per successful run and keeps at most 14 downloaded photos alongside the bundled collection. It stores the source, author and license for each photo. Network responses have size/time limits and only Commons/Wikimedia HTTPS hosts are allowed.
+- Hold OK on Change wallpaper for the daily sync on/off switch, Sync now, download status and Photo credits. Downloaded photos join the same five-minute rotation in both themes. Failures preserve all offline wallpapers and retry later; new photos do not require an APK update.
 - Theme, between Settings and Change wallpaper, offers Scenic (compact dock) and Apple TV (edge-to-edge 16:9 app banners and a five-column app grid). The Apple TV layout uses rounded artwork, a short focus lift/zoom, focused-app labels, a spacious scenery area, and a minimal bottom control row. Missing app banners fall back to the app icon. Choose a layout and press Apply theme; Cancel leaves the current layout unchanged. Dock choices/order, wallpaper and dark mode are shared across layouts. The selected UI theme persists locally.
 - App discovery and icon loading run off the UI thread. The first screen draws immediately with placeholders, then fills in the apps. Returning Home reuses the cached app list; package changes trigger a refresh rather than rescanning on every resume. Both themes use native controls without web views, blur effects or continuous animation.
 - The top-right Dark mode toggle switches the launcher's panels, text, menus and wallpaper shading between light and dark themes. The choice is saved locally; Android's global theme is untouched.
 - Wi-Fi arcs and a strength label refresh every 15 seconds from the device RSSI. Disconnected or Ethernet states are shown explicitly. No location or internet permission is required; only normal Wi-Fi/network-state permissions were added.
 - Settings opens the Android TV settings app.
-- Home-button helper observes only `com.ooredoo.tv.stb` window-state events and opens Serene when its MainActivity appears. It cannot retrieve window contents and has no internet access. It also opens Serene when its service connects after boot.
+- Home-button helper observes only `com.ooredoo.tv.stb` window-state events and opens Serene when its MainActivity appears. It cannot retrieve window contents and does not perform network requests. Wallpaper networking runs in a separate JobService. The helper also opens Serene when its service connects after boot.
 
 ## Changes and limits
 
