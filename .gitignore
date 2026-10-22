@@ -1,0 +1,14 @@
+tools/
+build/
+backups/
+launcher-signing.p12
+*-inspection.txt
+*-check.txt
+home-debug.txt
+backup-path.txt
+launcher-update-backup.txt
+latest-update-backup.txt
+apple-redesign-backup.txt
+focus-fix-backup.txt
+launcher/assets/*.jpg
+restore-state.json

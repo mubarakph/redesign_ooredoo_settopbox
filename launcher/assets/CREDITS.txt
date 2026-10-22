@@ -1,0 +1,35 @@
+Scenic photographs from Unsplash and Pexels, downloaded as compressed 1280x720 JPEGs.
+Unsplash license: https://unsplash.com/license
+Images are bundled for offline wallpaper rotation. The app does not contact Unsplash.
+Pexels license: https://www.pexels.com/license/
+
+Alpine lake:
+https://images.unsplash.com/photo-1470770841072-f978cf4d019e
+
+Forest sunlight:
+https://images.unsplash.com/photo-1441974231531-c6227db76b6e
+
+Mountain valley:
+https://images.unsplash.com/photo-1464822759023-fed622ff2c3b
+
+Coastal sunrise:
+https://images.unsplash.com/photo-1507525428034-b723cf961d3e
+
+Munnar, Kerala — Roshan Chakkeeri (Unsplash):
+https://unsplash.com/photos/brown-and-green-mountains-under-blue-sky-during-daytime-hVD_OuNJcmc
+https://images.unsplash.com/photo-1628080657485-a45999f8a3cb
+
+Pine forest (Unsplash):
+https://images.unsplash.com/photo-1473448912268-2022ce9509d8
+
+Woodland (Unsplash):
+https://images.unsplash.com/photo-1448375240586-882707db888b
+
+Kerala backwaters — Karl Ahnee (Pexels):
+https://www.pexels.com/photo/kerala-backwaters-03-27869350/
+
+Athirappilly Falls, Kerala — Harsh Suthar (Pexels):
+https://www.pexels.com/photo/view-of-athirappilly-falls-in-india-14847155/
+
+Kerala palm backwaters — Stijn Dijkstra (Pexels):
+https://www.pexels.com/photo/serene-kerala-backwaters-with-lush-greenery-29988900/

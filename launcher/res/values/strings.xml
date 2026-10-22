@@ -1,0 +1,1 @@
+<resources><string name="bridge_description">Opens Serene when the protected Ooredoo home screen appears. Observes only Ooredoo window changes; cannot read window contents. No internet access.</string></resources>
