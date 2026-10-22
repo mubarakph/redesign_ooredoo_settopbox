@@ -44,6 +44,70 @@ This package includes `adb.exe`, which is needed to pair with the TV, install th
 
 Use the ports currently displayed on the TV: the pairing port and connection port are different. Pass the full path to the extracted `adb.exe` through `-AdbPath` when creating a backup. The ZIP and extracted tools are not stored in this repository.
 
+### Enable developer mode and test the TV connection
+
+This is the Windows/Wi-Fi procedure used on the Ooredoo SKW-HP44J-OTV running Android TV 14. Menu names may differ on other boxes. Keep the PC and TV on the same local network.
+
+1. On the TV, open **Settings → System → About** (sometimes **Device Preferences → About**).
+2. Highlight **Android TV OS build / Build number** and press OK seven times, until the developer confirmation appears. Select the build entry, not the Android version entry.
+3. Go back to **System / Device Preferences → Developer options** and enable **Wireless debugging**. Allow it on the current network if prompted.
+4. Open Wireless debugging and note its **IP address & port**. This main-screen port is the connection port.
+5. On the PC, open PowerShell and check whether ADB is on PATH:
+
+```powershell
+where.exe adb
+```
+
+If Windows cannot find it, extract the Platform-Tools ZIP linked above and open PowerShell in the folder containing `adb.exe`. You can run it as `./adb.exe` without adding it to PATH.
+
+6. Test network access before attempting ADB. Replace both example values with the IP and connection port displayed on your TV:
+
+```powershell
+Test-NetConnection -ComputerName TV_IP -Port CONNECTION_PORT
+```
+
+Look for **`TcpTestSucceeded : True`**. This confirms the PC can reach that port; it does **not** mean ADB is paired or authorized. If false, recheck the current port, TV connectivity, and whether the router's guest-network/client-isolation settings separate the devices.
+
+7. Check the downloaded ADB executable:
+
+```powershell
+./adb.exe version
+```
+
+8. On the TV, select **Pair device with pairing code** and leave that screen open. Use the IP and port on that pairing screen:
+
+```powershell
+./adb.exe pair TV_IP:PAIRING_PORT
+```
+
+Enter the current pairing code directly into PowerShell when prompted. Expected result: **`Successfully paired to ...`**. If pairing fails with a protocol/status error, close and reopen the pairing screen and retry with its current port and code. Do not use the main connection port for pairing. If necessary, restart the PC's ADB server before retrying:
+
+```powershell
+./adb.exe kill-server
+./adb.exe start-server
+```
+
+9. Return to the TV's main Wireless debugging screen and use its current connection port:
+
+```powershell
+./adb.exe connect TV_IP:CONNECTION_PORT
+./adb.exe devices -l
+```
+
+Expected results are **`connected to ...`** and an entry whose state is **`device`**, followed by the TV's product/model details. A `Successfully paired` message alone is not the final connection check. If ADB discovers the same box by both IP and an mDNS name, use `-s TV_IP:CONNECTION_PORT` to select it explicitly.
+
+10. Confirm shell access with a read-only command:
+
+```powershell
+./adb.exe -s TV_IP:CONNECTION_PORT shell getprop ro.product.model
+```
+
+The tested box identifies as `SKW_HP44J_OTV`. Once connectivity is confirmed, create the original backup before installing or disabling anything.
+
+Ports can change after toggling Wireless debugging or restarting the TV. Recheck the TV's screen before reconnecting; `./adb.exe mdns services` can also show advertised ADB services. This particular firmware advertised a different ADB port after reboot, so do not assume the initial connection endpoint is permanent.
+
+Run the PowerShell commands one at a time in the shown order. If the prompt changes to `>>`, press **Ctrl+C** to cancel the unfinished command and return to the normal `PS ...>` prompt before retrying.
+
 ## Backup and restore
 
 The `backups` folder holds the original package dump, all three settings namespaces, original HOME component, disabled-package list, device properties, an Ooredoo APK copy, screenshots, and operation results. This is a configuration snapshot, not a full app-data backup.
