@@ -171,6 +171,6 @@ The Apple TV focus fix disables ancestor clipping to padding and reserves vertic
 
 ### Home background music
 
-An original, quiet ambient loop plays offline while the launcher is visible, in either theme. **Mute music / Unmute music** beside Dark mode controls this music only and remembers your choice. It never changes TV volume or mutes other apps. Opening an app or switching the screen off stops playback; audio focus loss pauses it. Existing music from another app takes priority.
+An original, quiet Indian-inspired instrumental loop with synthesized flute, plucked strings, and a tonic/fifth drone plays offline while the launcher is visible, in either theme. **Mute music / Unmute music** beside Dark mode controls this music only and remembers your choice. It never changes TV volume or mutes other apps. Opening an app or switching the screen off stops playback; audio focus loss pauses it. Existing music from another app takes priority.
 
-`Generate-Ambient.ps1` synthesizes the 32-second loop locally during `build.ps1` (22.05 kHz mono PCM, about 1.4 MB). Playback uses 14% player gain and asynchronous preparation. No music download or subscription is required.
+`Generate-Ambient.ps1` synthesizes the 48-second loop locally during `build.ps1` (22.05 kHz mono PCM, about 2.1 MB). Playback uses 14% player gain and asynchronous preparation. No music download or subscription is required.
