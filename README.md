@@ -168,3 +168,7 @@ Installed and inspected actual TV screenshots; tested launching YouTube and retu
 Initial reboot verification passed: Android reported boot completed, Serene was the resumed activity without a manual launch, the Home helper remained enabled, and both disabled packages retained their states. The box advertised a different ADB port after reboot; the local saved restore endpoint was updated accordingly. Version 2 was verified with TV screenshots for light/dark themes, All apps and Back, dock reordering and its position picker, and distinct photo wallpapers. The expanded ten-photo version is approximately 2 MB. Original local dock choices are preserved. Local backups contain previous APK/source and before/after screenshots. Full Ooredoo restoration remains available through Restore-TV.ps1.
 
 The Apple TV focus fix disables ancestor clipping to padding and reserves vertical headroom for the enlarged tile and shadow. Rounded clipping remains enabled on the artwork itself.
+
+### Doha weather widget
+
+Both themes show Doha temperature (°C), conditions, and today's high/low. Select the widget with the remote for feels-like temperature, humidity, wind and manual refresh. Weather is fetched asynchronously from Open-Meteo every 30 minutes while Home is visible; failures retry after five minutes. Cached readings show their update time, including when offline. The city coordinates are fixed to Doha; GPS and location permissions are not used. Data attribution: [Open-Meteo](https://open-meteo.com/) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
