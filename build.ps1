@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 & (Join-Path $root 'Fetch-Wallpapers.ps1')
-& (Join-Path $root 'Generate-Ambient.ps1')
+
 $jdk = (Get-ChildItem "$root\tools\jdk" -Directory | Select-Object -First 1).FullName
 $bt = "$root\tools\buildtools\android-15"
 $android = "$root\tools\platform\android-35\android.jar"
@@ -18,7 +18,7 @@ Check
 Check
 & "$bt\aapt2.exe" compile --dir "$root\launcher\res" -o "$root\build\resources.zip"
 Check
-& "$bt\aapt2.exe" link -0 wav -I $android --manifest "$root\launcher\AndroidManifest.xml" -A "$root\launcher\assets" -o "$root\build\unsigned.apk" "$root\build\resources.zip"
+& "$bt\aapt2.exe" link -I $android --manifest "$root\launcher\AndroidManifest.xml" -A "$root\launcher\assets" -o "$root\build\unsigned.apk" "$root\build\resources.zip"
 Check
 & "$jdk\bin\jar.exe" uf "$root\build\unsigned.apk" -C "$root\build\dex" classes.dex
 Check

@@ -168,9 +168,3 @@ Installed and inspected actual TV screenshots; tested launching YouTube and retu
 Initial reboot verification passed: Android reported boot completed, Serene was the resumed activity without a manual launch, the Home helper remained enabled, and both disabled packages retained their states. The box advertised a different ADB port after reboot; the local saved restore endpoint was updated accordingly. Version 2 was verified with TV screenshots for light/dark themes, All apps and Back, dock reordering and its position picker, and distinct photo wallpapers. The expanded ten-photo version is approximately 2 MB. Original local dock choices are preserved. Local backups contain previous APK/source and before/after screenshots. Full Ooredoo restoration remains available through Restore-TV.ps1.
 
 The Apple TV focus fix disables ancestor clipping to padding and reserves vertical headroom for the enlarged tile and shadow. Rounded clipping remains enabled on the artwork itself.
-
-### Home background music
-
-An original, quiet Indian-inspired instrumental loop with synthesized flute, plucked strings, and a tonic/fifth drone plays offline while the launcher is visible, in either theme. **Mute music / Unmute music** beside Dark mode controls this music only and remembers your choice. It never changes TV volume or mutes other apps. Opening an app or switching the screen off stops playback; audio focus loss pauses it. Existing music from another app takes priority.
-
-`Generate-Ambient.ps1` synthesizes the 48-second loop locally during `build.ps1` (22.05 kHz mono PCM, about 2.1 MB). Playback uses 14% player gain and asynchronous preparation. No music download or subscription is required.
